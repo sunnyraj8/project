@@ -1,0 +1,87 @@
+# to get the summarige data from the dataset
+import pandas as pd
+import numpy as np
+mca=pd.read_csv("https://raw.githubusercontent.com/pushpak2408/project/refs/heads/main/info3.csv")
+mca
+
+******
+# to calculate 25% percentile for avarege pulse
+mp=mca['Average_Pulse']
+percentile=np.percentile(mp,25)
+print(percentile)
+
+*******
+# to calculate 10% percentile for max pulse
+mp=mca['Max_Pulse']
+percentile=np.percentile(mp,10)
+print(percentile)
+
+*********
+# to find the standard deviation of every atributes
+sd=np.std(mca)
+sd
+
+
+******
+
+# to find the coefficient variation of every atributes
+sd=np.std(mca)
+cv=sd/np.mean(mca)
+cv
+
+
+******
+# to calculate the varience of average pulse
+sd=np.std(mca['Average_Pulse'])
+var=np.var(mca['Average_Pulse'])
+print(var)
+
+
+*******
+
+helth_information4=pd.read_csv("https://raw.githubusercontent.com/pushpak2408/project/refs/heads/main/info4.csv",header=0,sep=",")
+helth_information4
+
+*******
+
+# Positive Corelation Coefficent
+import matplotlib.pyplot as plt
+helth_information4.plot(x='Average_Pulse',y='Calorie_Burnage',kind='scatter')
+plt.show()
+
+*******
+
+#negative corelation coeficient
+import matplotlib.pyplot as plt
+negative_corelation={'x':[10,8,6,4,2],'y':[10,8,6,4,2]}
+df=pd.DataFrame(negative_corelation)
+print(df)
+df.plot(x='x',y='y',kind='scatter')
+plt.show()
+
+
+*******
+
+
+#to plot no corelation using the dataset
+mca=pd.read_csv("https://raw.githubusercontent.com/pushpak2408/project/refs/heads/main/info3.csv")
+mca
+mca.plot(x='Duration',y='Max_Pulse',kind='scatter')
+plt.show()
+
+
+******
+# to print correlation matrix (tabular representation)
+corr_matrix=round(mca.corr(),2)
+corr_matrix
+
+
+******
+#to genarate heatmap(graphical representation using info3)
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.heatmap(corr_matrix,vmin=-1,vmax=1,center=0,cmap=sns.diverging_palette(20,220,n=500),square=True,annot=True)
+plt.show()
+
+
+*******

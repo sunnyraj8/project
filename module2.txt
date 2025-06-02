@@ -1,0 +1,44 @@
+import pandas as pd
+import numpy as np
+mca=pd.read_csv("https://raw.githubusercontent.com/pushpak2408/project/refs/heads/main/info2.csv")
+print(mca)
+
+*****
+#to plot a straight line using dataset
+import matplotlib.pyplot as plt
+mca.plot(x='Average_Pulse',y='Calorie_Burnage',kind='line')
+plt.ylim(ymin=30)
+plt.xlim(xmin=50)
+plt.show()
+
+******
+#write a user define function to calculate slope
+def slope(x1,y1,x2,y2):
+  m=(y2-y1)/(x2-x1)
+  return m
+print(slope(50,30,60,40))
+
+******
+#calculate slope and intercept using polyfit
+import numpy as np
+x=mca['Average_Pulse']
+y=mca['Calorie_Burnage']
+slope_intercept=np.polyfit(x,y,1)
+print(slope_intercept)
+
+*******
+#userdefine function for calculation of caloriburnage
+def Calorie_Burnage(x1,slope=2,intercept=80):
+  s=(slope*x1)+intercept
+  return s
+print(Calorie_Burnage(125))
+
+********
+#write code to scatter values maintoring min and new limit
+import matplotlib.pyplot as plt
+mca.plot(x='Average_Pulse',y='Calorie_Burnage',kind='scatter')
+plt.ylim(ymin=30)
+plt.xlim(xmin=50)
+plt.show()
+
+******

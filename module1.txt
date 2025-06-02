@@ -1,0 +1,70 @@
+import pandas as pd
+import numpy as np
+Array=[25,23,24,45]
+print(Array)
+
+****
+#define a dataframe
+mca={'col1':[1,2,3,4],'col2':[5,6,7,8]}
+df=pd.DataFrame(data=mca)
+print(df)
+
+*****
+#to count the number of columns
+count_column=df.shape[1]
+print(count_column)
+
+*****
+#to count the number of rows
+count_rows=df.shape[0]
+print(count_rows)
+
+********
+#to find the maximum value in the array
+maximum=max(24,23,54,74)
+print(maximum)
+
+********
+#to find the minimum vakue in the arrary
+minimum=min(24,23,54,74)
+print(minimum)
+
+*******
+#to find the avarage value in the array
+avarage=[23,24,45,67]
+avg=np.mean(avarage)
+print(avg)
+
+*******
+#to import data using python
+mca=pd.read_csv("https://raw.githubusercontent.com/pushpak2408/project/refs/heads/main/info.csv")
+print(mca)
+
+*******
+mca.head()
+
+*******
+mca.tail()
+
+*****
+#two display all rows except last 2 rows
+mca=pd.read_csv("https://raw.githubusercontent.com/pushpak2408/project/refs/heads/main/info.csv")
+print(mca.head(-2))
+
+******
+print(mca.info())
+
+*******
+mca.dropna(axis=0,inplace=True)
+print(mca.info())
+     
+
+*******
+mca['Average_Pulse']=mca['Average_Pulse'].astype(float)
+mca['Max_Pulse']=mca['Max_Pulse'].astype(float)
+print(mca.info())
+
+*******
+print(mca.describe())
+
+*******

@@ -1,0 +1,60 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy import stats
+
+# Read CSV file
+mca = pd.read_csv("https://raw.githubusercontent.com/pushpak2408/project/refs/heads/main/info3.csv", header=0, sep=",")
+
+# Display first few rows to verify data loading
+mca
+
+
+******
+# Extract columns
+x = mca['Average_Pulse']
+y = mca['Calorie_Burnage']
+
+# Perform linear regression
+slope, intercept, r, p, std_err = stats.linregress(x, y)
+
+# Print results
+print("Slope:", slope)
+print("Intercept:", intercept)
+print("Correlation Coefficient (r):", r)
+print("P-value:", p)
+print("Standard Error:", std_err)
+
+
+*******
+
+def myfunction(x):
+  return slope * x + intercept
+
+new_y=myfunction(x)
+print(new_y)
+
+
+
+*******
+plt.figure(figsize=(7, 5))
+plt.scatter(x, y)
+plt.plot(x, new_y)
+plt.xlabel('Average_Pulse')
+plt.ylabel('Calorie_Burnage')
+plt.show()
+
+
+******
+import pandas as pd
+import statsmodels.formula.api as smf
+mca=pd.read_csv("https://raw.githubusercontent.com/pushpak2408/project/refs/heads/main/info3.csv")
+mca
+     
+
+*******
+model=smf.ols('Calorie_Burnage~Average_Pulse',data=mca).fit()
+print(model.summary())
+
+
+*******
+
