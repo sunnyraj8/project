@@ -1,0 +1,441 @@
+--JAVA QUESTION---
+
+1. Implement a Java program to calculate factorial of n.
+Ans:- import java.util.Scanner;
+public class FactorialCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a positive integer: ");
+        int n = scanner.nextInt();
+        long factorial = 1;
+        for (int i = 1; i <= n; i++)
+       {
+            factorial *= i;
+        }
+        System.out.println("Factorial of " + n + " is: " + factorial);
+        scanner.close();
+    }
+}
+Output: Enter a positive integer:  5
+ Factorial of  5  is: 120
+
+2. Implement a Java program for Fibonacci series.
+Ans:-  import java.util.Scanner;
+
+public class FibonacciSeries {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter number of terms: ");
+        int n = scanner.nextInt();
+        int first = 0, second = 1;
+        System.out.print("Fibonacci Series: ");
+        for (int i = 1; i <= n; i++) {
+            System.out.print(first + " ");
+            int next = first + second;
+            first = second;
+            second = next;
+        }
+        scanner.close();
+    }
+}
+Output: Enter number of terms: 7
+Fibonacci Series: 0 1 1 2 3 5 8
+
+3. Implement a Java program to find HCF of two Numbers.
+Ans:- import java.util.Scanner;
+
+public class HCFCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter first number: ");
+        int a = scanner.nextInt();
+        System.out.print("Enter second number: ");
+        int b = scanner.nextInt();
+        int hcf = 1;
+        for (int i = 1; i <= a && i <= b; i++) {
+            if (a % i == 0 && b % i == 0) {
+                hcf = i;
+            }
+        }
+        System.out.println("HCF of " + a + " and " + b + " is: " + hcf);
+        scanner.close();
+    }
+}
+Output:- Enter first number: 36
+Enter second number: 60
+HCF of 36 and 60 is: 12
+
+4. Implement a Java program to find LCM of two Numbers.
+Ans:- import java.util.Scanner;
+
+public class LCMCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter first number: ");
+        int a = scanner.nextInt();
+        System.out.print("Enter second number: ");
+        int b = scanner.nextInt();
+        int lcm = (a * b) / findHCF(a, b);
+        System.out.println("LCM of " + a + " and " + b + " is: " + lcm);
+        scanner.close();
+    }
+
+    public static int findHCF(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+}
+Output: Enter first number: 12
+Enter second number: 18
+LCM of 12 and 18 is: 36
+5. Implement a Java program to count the number of digits of an integer.
+Ans:- import java.util.Scanner;
+public class DigitCounter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        int number = scanner.nextInt();
+        int count = 0;
+        if (number == 0) {
+            count = 1;
+        } else {
+            number = Math.abs(number);
+            while (number > 0) {
+                number /= 10;
+                count++;
+            }
+        }
+        System.out.println("Number of digits: " + count);
+        scanner.close();
+    }
+}
+Output: Enter an integer: -12345
+               Number of digits in -12345 is: 5
+
+6. Implement a Java program to check whether a number is palindrome or not.
+Ans:- import java.util.Scanner;
+public class PalindromeCheck {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        int number = scanner.nextInt();
+        int original = number;
+        int reversed = 0;
+        while (number != 0) {
+            int digit = number % 10;
+            reversed = reversed * 10 + digit;
+            number /= 10;
+        }
+        if (original == reversed) {
+            System.out.println(original + " is a palindrome.");
+        } else {
+            System.out.println(original + " is not a palindrome.");
+        }
+        scanner.close();
+    }      }
+
+Output: Enter a number: 121
+121 is a palindrome.
+
+7. Implement a Java program to check whether a number is prime or not.
+Ans:- import java.util.Scanner;
+
+public class PrimeCheck {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+        boolean isPrime = true;
+
+        if (number <= 1) {
+            isPrime = false;
+        } else {
+            for (int i = 2; i <= Math.sqrt(number); i++) {
+                if (number % i == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+        }
+
+        if (isPrime) {
+            System.out.println(number + " is a prime number.");
+        } else {
+            System.out.println(number + " is not a prime number.");
+        }
+
+        scanner.close();
+    }
+}
+Output: Enter a positive integer: 7
+7 is a prime number.
+
+
+
+
+
+
+
+
+
+8. Implement a Java program to implement method overloading.
+Ans:- public class MethodOverloadingExample {
+    public void display() {
+        System.out.println("No parameters");
+    }
+    public void display(int a) {
+        System.out.println("One integer parameter: " + a);
+    }
+    public void display(String str) {
+        System.out.println("One string parameter: " + str);
+    }
+    public void display(int a, int b) {
+        System.out.println("Two integer parameters: " + a + " and " + b);
+    }
+
+    public static void main(String[] args) {
+        MethodOverloadingExample obj = new MethodOverloadingExample();
+        obj.display();
+        obj.display(10);
+        obj.display("Hello");
+        obj.display(5, 15);
+    }
+}
+Output:- No parameters  
+One integer parameter: 10  
+One string parameter: Hello  
+Two integer parameters: 5 and 15  
+
+9. Implement a Java program to implement default constructor or 0-argument Constructor.
+Ans:- public class DefaultConstructorExample {
+    
+    DefaultConstructorExample() {
+        System.out.println("This is the default constructor.");
+    }
+    public static void main(String[] args)
+    {
+        DefaultConstructorExample obj = new DefaultConstructorExample();
+    }
+}
+
+Output:- This is the default constructor.
+
+ 10. Implement a Java program to implement parameterized constructor.
+Ans:- public class ParameterizedConstructorExample {
+    int id;
+    String name;
+
+    ParameterizedConstructorExample(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    void display() {
+        System.out.println("ID: " + id);
+        System.out.println("Name: " + name);
+    }
+    public static void main(String[] args) {
+        ParameterizedConstructorExample obj = new ParameterizedConstructorExample(101, "Chanchal");
+        obj.display();
+    }
+}
+
+Output:- ID: 101
+Name: Chanchal
+
+
+11. Implement a Java program to implement constructor overloading.
+Ans:- public class ConstructorOverloadingExample {
+    int id;
+    String name;
+
+    // Default constructor
+    ConstructorOverloadingExample() {
+        id = 0;
+        name = "Unknown";
+    }
+
+    // Constructor with one parameter
+    ConstructorOverloadingExample(int id) {
+        this.id = id;
+        name = "Unknown";
+    }
+
+    // Constructor with two parameters
+    ConstructorOverloadingExample(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    void display() {
+        System.out.println("ID: " + id + ", Name: " + name);
+    }
+
+    public static void main(String[] args) {
+        ConstructorOverloadingExample obj1 = new ConstructorOverloadingExample();
+        ConstructorOverloadingExample obj2 = new ConstructorOverloadingExample(101);
+        ConstructorOverloadingExample obj3 = new ConstructorOverloadingExample(102, "Chanchal");
+
+        obj1.display();
+        obj2.display();
+        obj3.display();
+    }
+}
+Output:- ID: 0, Name: Unknown
+ID: 101, Name: Unknown
+ID: 102, Name: Chanchal
+
+
+12. Implement a Java program to implement static members.
+Ans:- public class StaticMembersExample {
+    static int count = 0;
+
+    StaticMembersExample() {
+        count++;
+    }
+
+    static void displayCount() {
+        System.out.println("Number of objects created: " + count);
+    }
+
+    public static void main(String[] args) {
+        StaticMembersExample obj1 = new StaticMembersExample();
+        StaticMembersExample obj2 = new StaticMembersExample();
+        StaticMembersExample obj3 = new StaticMembersExample();
+
+        StaticMembersExample.displayCount();
+    }
+}
+Output:- Number of objects created: 3
+
+
+
+
+
+
+13. Implement a Java program to implement Single inheritance.
+Ans:- class Animal {
+    void eat() {
+        System.out.println("This animal eats food.");
+    }
+}
+class Dog extends Animal {
+    void bark() {
+        System.out.println("The dog barks.");
+    }
+}
+public class SingleInheritanceExample {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.eat();   // Inherited method
+        dog.bark();  // Child class method
+    }
+}
+
+Output:- This animal eats food.
+The dog barks.
+
+14. Implement a Java program to implement method overriding.
+Ans:- class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+public class MethodOverridingExample {
+    public static void main(String[] args) {
+        Animal myAnimal = new Animal();
+        Animal myDog = new Dog();
+
+        myAnimal.sound();  // Calls Animal's method
+        myDog.sound();     // Calls Dog's overridden method
+    }
+}
+Output :- Animal makes a sound
+                 Dog barks
+
+15. Implement a Java program to implement multilevel inheritance.
+Ans:- class Animal {
+    void eat() {
+        System.out.println("Animal is eating");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog is barking");
+    }
+}
+
+class Puppy extends Dog {
+    void weep() {
+        System.out.println("Puppy is weeping");
+    }
+}
+public class MultilevelInheritanceExample {
+    public static void main(String[] args) {
+        Puppy puppy = new Puppy();
+        puppy.eat();   // From Animal class
+        puppy.bark();  // From Dog class
+        puppy.weep();  // From Puppy class
+    }
+}
+Output: -  Animal is eating
+Dog is barking
+Puppy is weeping
+
+16. Implement a Java program to implement interface.
+Ans:- interface Drawable {
+    void draw();
+}
+class Circle implements Drawable {
+    public void draw() {
+        System.out.println("Drawing a circle");
+    }
+}
+public class InterfaceExample {
+    public static void main(String[] args) {
+        Circle c = new Circle();
+        c.draw();
+    }
+}
+
+Output:-  Drawing a circle
+17. Implement a Java program to implement multiple interface.
+Ans:- interface Printable {
+    void print();
+}
+
+interface Showable {
+    void show();
+}
+
+class Demo implements Printable, Showable {
+    public void print() {
+        System.out.println("Printing...");
+    }
+
+    public void show() {
+        System.out.println("Showing...");
+    }
+}
+
+public class MultipleInterfaceExample {
+    public static void main(String[] args) {
+        Demo obj = new Demo();
+        obj.print();
+        obj.show();
+    }
+}
+
+Output: Printing...
+Showing...
